@@ -1,0 +1,17 @@
+Package: unwind
+Title: Example Package for 'R_UnwindProtect'
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre"))
+  )
+Description: Example project that shows how to use 'R_UnwindProtect',
+  including tests for errors thrown and handled in various ways.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+URL: https://github.com/gaborcsardi/unwind
+BugReports: https://github.com/gaborcsardi/unwind/issues
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
