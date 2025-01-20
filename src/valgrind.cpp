@@ -6,19 +6,30 @@
 extern "C" {
 
 SEXP vg_do_leak_check() {
+#ifdef _WIN32
+  return R_NilValue;
+#else
   VALGRIND_DO_ADDED_LEAK_CHECK;
   return R_NilValue;
+#endif
 }
 
 SEXP vg_is_on() {
+#ifdef _WIN32
+    return Rf_ScalarLogical(0);
+#else
   if (RUNNING_ON_VALGRIND == 1) {
     return Rf_ScalarLogical(1);
   } else {
     return Rf_ScalarLogical(0);
   }
+#endif
 }
 
 SEXP vg_set_leak_check(SEXP val) {
+#ifdef _WIN32
+  return R_NilValue;
+#else
   if (RUNNING_ON_VALGRIND == 1) {
     const char *cval = CHAR(STRING_ELT(val, 0));
     if (!strcmp("yes", cval)) {
@@ -34,9 +45,13 @@ SEXP vg_set_leak_check(SEXP val) {
     }
   }
   return R_NilValue;
+#endif
 }
 
 SEXP vg_set_gen_suppressions(SEXP val) {
+#ifdef _WIN32
+  return R_NilValue;
+#else
   if (RUNNING_ON_VALGRIND == 1) {
     const char *cval = CHAR(STRING_ELT(val, 0));
     if (!strcmp("yes", cval)) {
@@ -50,6 +65,7 @@ SEXP vg_set_gen_suppressions(SEXP val) {
     }
   }
   return R_NilValue;
+#endif
 }
 
 } // extern "C"
