@@ -1,0 +1,229 @@
+# By R and R-hub
+
+{
+   Suppression for wcsrtombs
+   Memcheck:Cond
+   fun:__wcsnlen_sse4_1
+   fun:wcsrtombs
+   fun:wcstombs
+}
+
+{
+   Suppression for do_makename
+   Memcheck:Addr16
+   fun:__wcsnlen_sse4_1
+   fun:wcsrtombs
+   fun:wcstombs
+}
+
+{
+   Suppression for gotoblas #1
+   Memcheck:Value8
+   fun:____strtoul_l_internal
+   fun:get_coretype
+   fun:gotoblas_dynamic_init
+   fun:gotoblas_init
+   fun:call_init
+   fun:call_init
+   fun:_dl_init
+   fun:(below main)
+}
+
+{
+   Suppression for gotoblas #2
+   Memcheck:Cond
+   fun:____strtoul_l_internal
+   fun:get_coretype
+   fun:gotoblas_dynamic_init
+   fun:gotoblas_init
+   fun:call_init
+   fun:call_init
+   fun:_dl_init
+   fun:(below main)
+}
+
+{
+   Suppression for setenv
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:__add_to_environ
+   fun:setenv
+   fun:Putenv
+   fun:process_Renviron.part.0
+   fun:process_Renviron
+   fun:process_system_Renviron
+   fun:Rf_initialize_R
+   fun:main
+}
+
+{
+   Suppression for setenv #2
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:__add_to_environ
+   fun:setenv
+   fun:do_setenv
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:Rf_eval
+   fun:Rf_evalList
+   fun:Rf_eval
+}
+
+{
+   Suppression for setenv #3
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:R_reInitTempDir
+   fun:R_reInitTempDir
+   fun:setup_Rmainloop
+   fun:Rf_mainloop
+   fun:main
+}
+
+{
+   Suppression for setenv #4
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:do_setenv
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:Rf_eval
+   fun:R_ReplFile
+}
+
+{
+   Suppression for setenv #5
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:do_setenv
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:Rf_eval
+   fun:Rf_evalList
+}
+
+{
+   Suppression for setenv #6
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:_rl_get_screen_size
+   obj:/usr/lib/*/libreadline.so.8.1
+   fun:rl_expand_prompt
+   fun:rl_set_prompt
+   fun:rl_callback_handler_install
+   fun:pushReadline
+   fun:Rstd_ReadConsole
+   fun:Rf_ReplIteration
+   fun:R_ReplConsole
+}
+
+{
+   Suppression for setenv #7
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:Putenv
+   fun:process_Renviron.part.0
+   fun:process_Renviron
+   fun:process_system_Renviron
+   fun:Rf_initialize_R
+   fun:main
+}
+
+{
+   Suppression for GOTO BLAS #3
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.34
+   fun:blas_thread_init
+   fun:gotoblas_init
+   fun:call_init
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/*/ld-linux-*.so.1
+}
+
+{
+   Suppression for cli's thread start
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.34
+   fun:cli__start_thread
+   fun:clic_start_thread
+   fun:R_doDotCall
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+}
+
+{
+   Suppression for dlopen
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:malloc
+   fun:_dlfo_mappings_segment_allocate
+   fun:_dl_find_object_update_1
+   fun:_dl_find_object_update
+   fun:dl_open_worker_begin
+   fun:_dl_catch_exception
+   fun:dl_open_worker
+   fun:_dl_catch_exception
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_exception
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen_implementation
+   fun:dlopen@@GLIBC_2.34
+}
