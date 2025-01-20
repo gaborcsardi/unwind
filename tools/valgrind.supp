@@ -186,7 +186,7 @@
 }
 
 {
-   Suppression for cli's thread start
+   Suppression for cli's thread start #1
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
@@ -245,4 +245,119 @@
    fun:pushReadline
    fun:Rstd_ReadConsole
    fun:Rf_ReplIteration
+}
+
+{
+   Suppression for setenv #9
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:__add_to_environ
+   fun:setenv
+   fun:do_setenv
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:R_forceAndCall
+   fun:do_mapply
+   fun:bcEval_loop
+}
+
+{
+   Suppression for setenv #10
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:Putenv
+   fun:process_Renviron
+   fun:process_system_Renviron
+   fun:Rf_initialize_R
+   fun:main
+}
+
+{
+   Suppression for cli's thread start #2
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.34
+   obj:*/cli.so
+   obj:*/cli.so
+   fun:R_doDotCall
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:R_forceAndCall
+}
+
+{
+   Suppression for GOTO BLAS #4
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   fun:calloc
+   fun:allocate_dtv
+   fun:_dl_allocate_tls
+   fun:allocate_stack
+   fun:pthread_create@@GLIBC_2.34
+   fun:blas_thread_init
+   fun:gotoblas_init
+   fun:call_init.part.0
+   fun:call_init
+   fun:_dl_init
+   obj:/usr/lib/*/ld-linux-x86-64.so.2
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+}
+
+{
+   Suppression for setenv #11
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:__add_to_environ
+   fun:setenv
+   fun:do_setenv
+   fun:bcEval_loop
+   fun:bcEval
+   fun:bcEval
+   fun:Rf_eval
+   fun:R_execClosure
+   fun:applyClosure_core
+   fun:Rf_applyClosure
+   fun:R_forceAndCall
+   fun:do_mapply
+   fun:bcEval_loop
+}
+
+{
+   Suppression for setenv #12
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:tsearch
+   fun:__add_to_environ
+   fun:setenv
+   fun:Putenv
+   fun:process_Renviron
+   fun:process_system_Renviron
+   fun:Rf_initialize_R
+   fun:main
 }
