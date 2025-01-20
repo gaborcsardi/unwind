@@ -2,6 +2,7 @@ on:
   push:
     branches: [main, master]
   pull_request:
+  workflow_dispatch:
 
 name: leak-check.yaml
 
@@ -32,3 +33,5 @@ jobs:
         run: |
           R -d "valgrind --tool=memcheck --leak-check=full --track-origins=yes -q --log-file=/tmp/valgrind.log --suppressions=tools/valgrind.supp" \
             -e 'testthat::test_local()'
+        env:
+          VALGRIND_FORCE: true
