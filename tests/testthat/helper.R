@@ -1,4 +1,6 @@
 expect_no_leaks <- function(expr, ...) {
+  # Generate suppressions, in case there are leaks that we want suppressed
+  .Call(vg_set_gen_suppressions, "all")
   vg_res <- with_valgrind(expr)
   if (!vg_res$valgrind_on) {
     testthat::expect(FALSE, "Valgrind is off", ...)
