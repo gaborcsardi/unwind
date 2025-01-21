@@ -61,6 +61,8 @@ with_valgrind <- function(expr) {
         "use --log-file=/tmp/valgrind.log for the default log file."
       )
     }
+    # Run a leak check before, so we don't include already exising leaks
+    .Call(vg_do_leak_check)
     pos <- file.size(logfile)
     value <- force(expr)
     .Call(vg_do_leak_check)

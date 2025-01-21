@@ -19,6 +19,14 @@ SEXP rc_1() noexcept;
 SEXP rc_2() noexcept;
 SEXP rc_3() noexcept;
 SEXP rc_4() noexcept;
+SEXP rc_5() noexcept;
+SEXP rc_6() noexcept;
+SEXP rc_7() noexcept;
+SEXP rc_8() noexcept;
+SEXP rc_9() noexcept;
+SEXP rc_10() noexcept;
+SEXP rc_11() noexcept;
+SEXP rc_12() noexcept;
 
 // -- internl API ----------
 
