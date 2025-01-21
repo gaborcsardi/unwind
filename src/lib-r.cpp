@@ -46,6 +46,7 @@ SEXP rc_5() noexcept {
 // So for C++ functions that are called from R/C functions, I need to use
 // CPP_BEGIN + CPP_END
 void rc_6_1() noexcept {
+CPP_INIT;
 CPP_BEGIN;
   std::vector<int> vec(20);
   vec[0] = 1;
@@ -63,6 +64,7 @@ SEXP rc_6() noexcept {
 // converts it to an R error, and the trycatch scope makes sure that
 // the vector object is cleaned up before that happens.
 void rc_8_1() noexcept {
+CPP_INIT;
 CPP_BEGIN;
   std::vector<int> vec(20);
   vec[0] = 1;
@@ -85,6 +87,7 @@ void rc_9_1() {
 }
 
 SEXP rc_9() noexcept {
+CPP_INIT
 CPP_BEGIN
   rc_9_1();
 CPP_END
@@ -104,6 +107,7 @@ void rc_11_1() {
 }
 
 SEXP rc_11() noexcept {
+CPP_INIT
 CPP_BEGIN
   rc_11_1();
 CPP_END
@@ -122,6 +126,7 @@ void rc_12_1(SEXP v) {
 }
 
 SEXP rc_12() noexcept {
+CPP_INIT
   SEXP ret = PROTECT(Rf_allocVector(INTSXP, 10));
 CPP_BEGIN
   rc_12_1(ret);
@@ -165,6 +170,7 @@ SEXP rc_4() noexcept {
 
 // Calling R API (or R/C functions) from CPP functions is not OK
 void rc_7_1() noexcept {
+CPP_INIT;
 CPP_BEGIN;
   std::vector<int> vec(20);
   vec[0] = 1;
@@ -192,6 +198,7 @@ void rc_10_1() noexcept {
 }
 
 SEXP rc_10() noexcept {
+CPP_INIT
 CPP_BEGIN
   rc_10_1();
 CPP_END

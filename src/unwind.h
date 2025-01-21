@@ -14,11 +14,13 @@ struct unwind_error {
   SEXP token;
 };
 
-#define CPP_BEGIN                                              \
+#define CPP_INIT                                               \
   char errmsg_[4096];                                          \
   bool cpperr_ = false;                                        \
   bool rerr_ = false;                                          \
-  SEXP err_ = R_NilValue;                                      \
+  SEXP err_ = R_NilValue;
+
+#define CPP_BEGIN                                              \
   try {
 
 #define CPP_END                                                \
